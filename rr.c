@@ -121,6 +121,8 @@ void main()
     scanf("%d",&quantum);
     roundRobin(processes,n,burst_time,quantum,arrival_time,prioritylist);
 }
+
+
 /*
 
 Enter the number of processes: 3
@@ -136,7 +138,7 @@ Enter the Burst time for processes 3:7
 Enter the priority for process 3:1
 Enter the time quantum for round robin: 2
 
-ROund RObin algorithm
+Round Robin algorithm
 Processes       AT      BT      Priority        WT      TAT     CT      RT
 1               0       1       2               0       1       1       0
 2               3       3       4               2       5       8       0
@@ -144,4 +146,5 @@ Processes       AT      BT      Priority        WT      TAT     CT      RT
 AVG waiting time: 1.000000
 AVG turnaround time: 4.666667
 AVG Response time: 0.000000
-Total Idle time: 2*/
+Total Idle time: 2
+*/
