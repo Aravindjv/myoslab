@@ -70,3 +70,19 @@ void dine(int n)
      printf("\n philosopher %d finished eationg",n);
 
 }
+/* philosopher 3 is thinking
+ philosopher 3 is earting
+ philosopher 2 is thinking
+ philosopher 1 is thinking
+ philosopher 4 is thinking
+ philosopher 5 is thinking
+ philosopher 3 finished eationg
+ philosopher 2 is earting
+ philosopher 4 is earting
+ philosopher 4 finished eationg
+ philosopher 2 finished eationg
+ philosopher 1 is earting
+ philosopher 1 finished eationg
+ philosopher 5 is earting
+ philosopher 5 finished eationg
+ */
