@@ -63,11 +63,11 @@ void dine(int n)
     printf("\n philosopher %d is thinking",n);
     pthread_mutex_lock(&chopstick[n]);
     pthread_mutex_lock(&chopstick[(n+1)%NUM_CHOPSTICKS]);
-    printf("\n philosopher %d is earting",n);
+    printf("\n philosopher %d is eating",n);
     sleep(3);
     pthread_mutex_unlock(&chopstick[n]);
      pthread_mutex_unlock(&chopstick[(n+1)%NUM_CHOPSTICKS]);
-     printf("\n philosopher %d finished eationg",n);
+     printf("\n philosopher %d finished eating",n);
 
 }
 /* philosopher 3 is thinking
