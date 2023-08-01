@@ -12,7 +12,6 @@ int main()
     for ( i = 0; i < n; i++)
     {
         scanf("%d",&req[i]);
-
     }
     mov=mov+abs(cp-req[0]);
     printf("%d->%d",cp,req[0]);
