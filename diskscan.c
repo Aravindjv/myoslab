@@ -1,42 +1,110 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+#include<stdio.h>
+#include<stdlib.h>
+
 int main()
 {
-    int i,n,req[50],mov=0,cp;
-    printf("Enter the current position\n");
-    scanf("%d",&cp);
-    printf("Enter the number of requests\n");
+    int rq[100],i,j,n,totalheadmovement=0,initial,size,move;
+    printf("Enter the no of requests:\n");
     scanf("%d",&n);
-    printf("Enter request order\n");
+    printf("Enter the request sequence\n");
+    for ( i = 0; i<n; i++)
+    {
+        scanf("%d",&rq[i]);
+    }
+    printf("Enter the initial head position\n");
+    scanf("%d",&initial);
+    printf("Enter the total disk size\n");
+    scanf("%d",&size);
+    printf("Enter the head movement direction for high 1 and for low 0\n");
+    scanf("%d",&move);
+
     for ( i = 0; i < n; i++)
     {
-        scanf("%d",&req[i]);
-
+       for ( j = 0;j < n-i-1; j++)
+       {
+        if(rq[j]>rq[j+1])
+        {
+            int temp =rq[j];
+            rq[j]=rq[j+1];
+            rq[j+1]=temp;
+        }
+       }
     }
-    mov=mov+abs(cp-req[0]);
-    printf("%d->%d",cp,req[0]);
-    for ( i = 1; i < n; i++)
+    int index;
+    for ( i = 0; i < n; i++)
     {
-        mov=mov+abs(req[i]-req[i-1]);
-        printf("->%d",req[i]);
+      if(initial<rq[i])
+      {
+        index=i;
+        break;
+      }
     }
-    printf("\n");
-    printf("Total head movement=%d\n",mov);
+    if(move==1)
+    {
+       printf("Sequence of request access:\n");
+       for ( i = index; i < n; i++)
+       {
+           printf("%d ",rq[i]);
+           totalheadmovement=totalheadmovement+abs(rq[i]-initial);
+           initial=rq[i];
+       }
+
+       totalheadmovement=totalheadmovement+abs(size-rq[i-1]-1);
+       initial=size-1;
+       for ( i = index-1; i >=0; i--)
+       {
+        printf("%d ",rq[i]);
+        totalheadmovement=totalheadmovement+abs(rq[i]-initial);
+        initial=rq[i];
+       }
+       
+       
+    }
+   else
+   {
+    printf("Sequence of request accsess");
     
-/*
-Enter the current position
-45
-Enter the number of requests
-5
-Enter request order
-30
-66
+         for ( i = index-1; i >=0; i--)
+       {
+        printf("%d ",rq[i]);
+        totalheadmovement=totalheadmovement+abs(rq[i]-initial);
+        initial=rq[i];
+       }
+       totalheadmovement=totalheadmovement+abs(size-rq[i-1]-1);
+       initial=0;
+         for ( i = index; i >=0; i--)
+       {
+        printf("%d ",rq[i]);
+        totalheadmovement=totalheadmovement+abs(rq[i]-initial);
+        initial=rq[i];
+       }
+    }
+    printf("\nTotal head movement is %d\n",totalheadmovement);
+    return 0;
+   /*
+Enter the no of requests:
+7 
+Enter the request sequence
+82
+170
+43
+140
 24
-75
+16
+
+190
+Enter the initial head position
 50
-45->30->66->24->75->50
-Total head movement=169
-*/
+Enter the total disk size
+200
+Enter the head movement direction for high 1 and for low 0
+1
+Sequence of request access:
+82 140 170 190 43 24 16 
+Total head movement is 332
+   */
     
 }
